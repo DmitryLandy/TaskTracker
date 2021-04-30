@@ -1,8 +1,13 @@
 {
   "dependencies": {
-    "mssql2": {
+    "secrets1": {
+      "type": "secrets.user"
+    },
+    "mssql1": {
+      "resourceId": null,
       "type": "mssql.local",
-      "connectionId": "BTAuthContextConnection"
+      "connectionId": "BTAuthContext",
+      "secretStore": "LocalSecretsFile"
     }
   }
 }

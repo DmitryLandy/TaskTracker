@@ -1,8 +1,11 @@
 {
   "dependencies": {
-    "mssql2": {
+    "secrets1": {
+      "type": "secrets"
+    },
+    "mssql1": {
       "type": "mssql",
-      "connectionId": "BTAuthContextConnection"
+      "connectionId": "BTAuthContext"
     }
   }
 }

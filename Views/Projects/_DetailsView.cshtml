@@ -1,0 +1,83 @@
+﻿@model ValueTuple<List<BugTracker.Models.Tasks>, BugTracker.Models.Projects>
+
+
+
+
+<div class="card w-50">
+    <div class="card-header">
+        @Html.DisplayFor(model => model.Item2.ProjectName)
+    </div>
+    <div class="card-body">
+        @Html.DisplayFor(model => model.Item2.ProjectDescription)
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header text-center">
+        Additional Details
+    </div>
+    <div class="card-body">
+        <ul class="list-group list-group-flush text-center">
+            <li class="list-group-item">
+                <h6>Total Tasks</h6>
+                <span>@Html.DisplayFor(model => model.Item1.Count)</span>
+            </li>
+            <li class="list-group-item">
+                <h6>@Html.DisplayNameFor(model => model.Item2.ProjectDate)</h6>
+                <span>@Html.DisplayFor(model => model.Item2.ProjectDate)</span>
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header text-center">
+        Total Task Completion Status
+    </div>
+    <div class="card-body">
+        <canvas id="pieChart"></canvas>
+    </div>
+</div>
+
+
+<script src="~/lib/Chart.js/chart.js"></script>
+
+    <script>
+
+        var ctx = document.getElementById("pieChart").getContext('2d');
+
+        ctx.canvas.height = window.innerHeight / 10;
+        ctx.canvas.width = ctx.canvas.height;
+        var tasksComp = @Model.Item1.Where(t => t.Completed == true).Count();
+        var tasksInComp = @Model.Item1.Where(t => t.Completed != true).Count();
+
+        var pieChartData = {
+            labels: ['Complete', 'Incomplete'],
+            datasets: [{
+                label: '# of Tasks',
+                data: [tasksComp, tasksInComp],
+                backgroundColor: [
+                    'rgba(0, 182, 66, 0.2)',
+                    'rgba(255, 0, 0, 0.2)'
+                ],
+                hoverBorderWidth: 5,
+
+                borderColor: [
+                    'rgba(0, 182, 66, 1)',
+                    'rgba(255, 0, 0, 1)'
+                ],
+                borderWidth: 1,
+
+            }]
+        };
+        var pieChart = new Chart(ctx, {
+            type: 'pie',
+            data: pieChartData
+
+        });
+    </script>   
+
+
+
+

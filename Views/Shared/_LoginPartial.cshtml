@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using BugTracker.Areas.Identity.Data
+
+@inject SignInManager<BugTrackerUser> SignInManager
+@inject UserManager<BugTrackerUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+<div class="bg-light min-vh-100" style="font-size: large">
+    <div class="text-left font-weight-bold">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="collapse navbar-collapse justify-content-center" id="navbarColor02">
+                <i class="bi bi-journal-check" style="font-size: 5rem; color: #ffd800;"></i>
+
+            </div>
+        </nav>
+        <a asp-controller="Home" asp-action="Index" class="list-group-item list-group-item-action"><i class="bi bi-house"></i> Home</a>
+        <a asp-controller="Projects" asp-action="Index" class="list-group-item list-group-item-action "><i class="bi bi-kanban"></i> Projects</a>
+        <a asp-controller="Tasks" asp-action="Index" class="list-group-item list-group-item-action"><i class="bi bi-list-check"></i> Tasks</a>        
+        <a asp-controller="Tasks" asp-action="ShowStats" class="list-group-item list-group-item-action"><i class="bi bi-pie-chart-fill"></i> Stats</a>
+        <div class="dropdown">
+            <a class="dropdown-toggle list-group-item list-group-item-action " data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+                Account Settings
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" id="manage" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Manage Account</a>
+                <div class="dropdown-divider"></div>
+                <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button id="logout" type="submit" class="dropdown-item btn btn-link">Logout</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    
+</div>
+}

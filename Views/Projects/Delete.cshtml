@@ -1,0 +1,45 @@
+﻿@model BugTracker.Models.Projects
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid w-50 bg-light">
+    <nav class="row navbar navbar-expand navbar-light bg-dark">
+        <h1 class="text-light text-uppercase">Delete Project</h1>
+    </nav>
+    <div class="row p-3">
+        <dl class="row">
+            <dt class="col-5">
+                @Html.DisplayNameFor(model => model.ProjectName)
+            </dt>
+            <dd class="col-5">
+                @Html.DisplayFor(model => model.ProjectName)
+            </dd>
+            <dt class="col-5">
+                @Html.DisplayNameFor(model => model.ProjectDescription)
+            </dt>
+            <dd class="col-5">
+                @Html.DisplayFor(model => model.ProjectDescription)
+            </dd>
+            <dt class="col-5">
+                @Html.DisplayNameFor(model => model.ProjectDate)
+            </dt>
+            <dd class="col-5">
+                @Html.DisplayFor(model => model.ProjectDate)
+            </dd>
+        </dl>
+        
+        <div class="form-group btn-group btn-block">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            <a asp-action="Index" class="btn btn-outline-secondary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+        </div>
+        <input type="hidden" asp-for="ProjectID" />
+
+        
+    </div>
+    
+
+
+</div>
+

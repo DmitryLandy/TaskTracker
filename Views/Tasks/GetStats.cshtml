@@ -1,0 +1,93 @@
+﻿@model TaskViewModel
+
+<div class="container-fluid ">
+    <nav class="row navbar navbar-expand navbar-light bg-dark justify-content-center">
+        <h1 class="text-light text-uppercase ">Statistics</h1>
+    </nav>
+
+    <div class="d-flex justify-content-around p-lg-4">
+        <div class="card">
+            <div class="card-header text-center">
+                Total Task Completion Status
+            </div>
+            <div class="card-body">
+                <canvas id="pieChart"></canvas>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header text-center">
+                Projects and Tasks
+            </div>
+            <div class="card-body">
+                <canvas id="barChart"></canvas>
+            </div>
+        </div>        
+    </div>
+</div>
+<script src="~/lib/Chart.js/chart.js"></script>
+@section Scripts{
+    <script>
+        
+        var ctx = document.getElementById("pieChart").getContext('2d');
+        ctx.canvas.width = window.innerWidth / 3;
+        ctx.canvas.height = ctx.canvas.width;
+
+        var pieChartData = {
+            labels: ['Complete', 'Incomplete'],
+            datasets: [{
+                label: '# of Tasks',
+                data: [@Model.tasksCompleted, @Model.tasksUncompleted],
+                backgroundColor: [
+                    'rgba(0, 182, 66, 0.2)',
+                    'rgba(255, 0, 0, 0.2)'
+                ],
+                hoverBorderWidth: 5,
+
+                borderColor: [
+                    'rgba(0, 182, 66, 1)',
+                    'rgba(255, 0, 0, 1)'
+                ],
+                borderWidth: 1,
+
+            }]
+        };
+        var pieChart = new Chart(ctx, {
+            type: 'pie',
+            data: pieChartData
+
+        });
+    </script>    
+
+    <script >        
+
+        var ctx = document.getElementById("barChart").getContext('2d');
+        ctx.canvas.width = window.innerWidth / 3;
+        ctx.canvas.height = ctx.canvas.width;
+        var barChartData = {
+            labels: ['Projects', 'Tasks'],
+            datasets: [{
+                label: 'Total in Account',
+                data: [@Model.projCount, @Model.taskCount],
+                backgroundColor: [
+                    'rgba(81, 162, 194, 0.2)',
+                    'rgba(120, 85, 171, 0.2)'
+                ],
+                hoverBorderWidth: 5,
+
+                borderColor: [
+                    'rgba(81, 162, 194, 1)',
+                    'rgba(120, 85, 171, 1)'
+                ],
+                borderWidth: 1,
+
+            }]
+        };
+        var barChart = new Chart(ctx, {
+            type: 'bar',
+            data: barChartData
+
+        });
+
+    </script>
+}
+

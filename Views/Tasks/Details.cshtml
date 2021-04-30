@@ -1,0 +1,68 @@
+﻿@model BugTracker.Models.Tasks
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<nav class="offset-md-3 row navbar navbar-expand navbar-light bg-light" style="max-width:40%">
+    <h1 class="text-success">Task Details</h1>
+</nav>
+<div class="offset-md-3 row " style="background-color:white; max-width:40%">
+    <div class="m-3">
+        <dl class="row">
+            <dt class="col-6">
+                Project Info
+            </dt>
+            <dd class="col-6">
+                <a asp-controller="Projects" asp-action="Details" asp-route-id="@Model.ProjectID" class="btn btn-outline-info"><i class="fa fa-info-circle" aria-hidden="true"></i> Info</a>
+            </dd>
+            <dt class="col-6">
+                @Html.DisplayNameFor(model => model.TaskName)
+            </dt>
+            <dd class="col-6">
+                @Html.DisplayFor(model => model.TaskName)
+            </dd>
+            <dt class="col-6">
+                @Html.DisplayNameFor(model => model.TaskDescription)
+            </dt>
+            <dd class="col-6">
+                @Html.DisplayFor(model => model.TaskDescription)
+            </dd>
+            <dt class="col-6">
+                @Html.DisplayNameFor(model => model.TaskStartDate)
+            </dt>
+            <dd class="col-6">
+                @Html.DisplayFor(model => model.TaskStartDate)
+            </dd>
+            <dt class="col-6">
+                @Html.DisplayNameFor(model => model.TaskDeadline)
+            </dt>
+            <dd class="col-6">
+                @Html.DisplayFor(model => model.TaskDeadline)
+            </dd>
+            <dt class="col-6">
+                Task Completion Status
+            </dt>
+            <dd class="col-6 text-center">
+                @{
+                    if (Model.Completed)
+                    {
+                        <div class="table-success"><i class="fa fa-check" aria-hidden="true"></i></div>
+                    }
+                    else
+                    {
+                        <div class="bg-danger"><i class="fa fa-times text-white" aria-hidden="true"></i></div>
+                    }
+                }
+            </dd>
+        </dl>
+
+        <div class="btn-group btn-block">
+            <a asp-action="Edit" asp-route-id="@Model.TaskID" class="btn btn-outline-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+
+            <a asp-action="Index" class="btn btn-outline-secondary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+        </div>
+    </div>
+</div>
+

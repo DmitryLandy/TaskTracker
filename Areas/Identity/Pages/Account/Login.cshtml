@@ -1,0 +1,57 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+    Layout = "~/Areas/Identity/Pages/_AuthLayout.cshtml";
+}
+
+
+<div class="col-md-10 offset-md-1">
+    <section>
+        <br />
+        <div class="text-center">
+            <i class="fa fa-user-circle fa-9x text-primary" aria-hidden="true"></i>
+        </div>
+        <form id="account" method="post">
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" class="form-control" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" class="form-control" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>            
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Log in</button>
+            </div>
+        </form>
+        <hr />
+
+        @if ((Model.ExternalLogins?.Count ?? 0) > 0)
+        {
+            <form  asp-page="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                <div class="text-center">
+                    <p>
+                        @foreach (var provider in Model.ExternalLogins)
+                        {
+                            <button type="submit" class="btn align-content-center" name="provider" value="@provider.Name">
+                                <img class="img-fluid border-0" src="~/images/btn_google_signin_dark_normal_web.png" />
+                            </button>
+                        }
+                    </p>
+                </div>
+            </form>
+        }
+
+        </section>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

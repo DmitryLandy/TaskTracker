@@ -1,0 +1,46 @@
+﻿@model BugTracker.Models.Projects
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid w-50 bg-light">
+    <nav class="row navbar navbar-expand navbar-light bg-dark">
+        <h1 class="text-light text-uppercase">Edit Project</h1>
+    </nav>
+
+    <div class="row">
+        <div class="col pt-3">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="ProjectID" />
+                <input type="hidden" asp-for="UserID" value="b" />
+
+                <div class="form-group">
+                    <label asp-for="ProjectName" class="control-label"></label>
+                    <input asp-for="ProjectName" class="form-control" />
+                    <span asp-validation-for="ProjectName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProjectDescription" class="control-label"></label>
+                    <textarea asp-for="ProjectDescription" class="form-control"></textarea>
+                    <span asp-validation-for="ProjectDescription" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProjectDate" class="control-label"></label>
+                    <input asp-for="ProjectDate" class="form-control" />
+                    <span asp-validation-for="ProjectDate" class="text-danger"></span>
+                </div>
+                <div class="form-group btn-group btn-block">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-outline-secondary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

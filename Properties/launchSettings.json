@@ -12,10 +12,8 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ConnectionStrings--TTConnection": "https://tasktrackervault.vault.azure.net/",
-        "AZURE_USERNAME": "dmitry.landy@outlook.com",
-        "KeyVaultUri": "https://tasktrackervault.vault.azure.net/"
+        "ASPNETCORE_ENVIRONMENT": "Development"
+        
       }
     }
   }

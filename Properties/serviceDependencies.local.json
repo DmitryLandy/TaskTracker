@@ -1,10 +1,10 @@
 {
   "dependencies": {
-    "secrets1": {
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.KeyVault/vaults/TaskTrackingVault",
-      "type": "secrets.keyVault",
-      "connectionId": "VaultUri",
-      "secretStore": null
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/dlandysqlserver/databases/TaskTrackerDb",
+      "type": "mssql.azure",
+      "connectionId": "BTAuthContext",
+      "secretStore": "AzureKeyVault"
     }
   }
 }

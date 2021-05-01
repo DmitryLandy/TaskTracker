@@ -32,7 +32,7 @@ namespace BugTracker
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            services.AddDbContext<BTAuthContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BTAuthContext")));
+            services.AddDbContext<BTAuthContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TTConnection")));
             services.AddAuthentication()
             .AddGoogle(options =>
             {

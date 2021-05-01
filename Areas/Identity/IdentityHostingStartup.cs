@@ -18,7 +18,7 @@ namespace BugTracker.Areas.Identity
             builder.ConfigureServices((context, services) => {
                 services.AddDbContext<BTAuthContext>(options =>
                     options.UseSqlServer(
-                        context.Configuration.GetConnectionString("BTAuthContext")));
+                        context.Configuration.GetConnectionString("TTConnection")));
 
                 services.AddDefaultIdentity<BugTrackerUser>(options => options.SignIn.RequireConfirmedAccount = false)
                     .AddEntityFrameworkStores<BTAuthContext>();

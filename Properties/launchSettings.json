@@ -13,7 +13,7 @@
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "ConnectionStrings--TTConnection": "https://tasktrackervault.vault.azure.net/",
+        "ConnectionStrings--TTConnection": "https://tasktrackervault.vault.azure.net/secrets/ConnectionStrings--TTConnection/ea3c5bf4fa6740e3a7029a4b8e1bfc5d",
         "AZURE_USERNAME": "dmitry.landy@outlook.com",
         "KeyVaultUri": "https://tasktrackervault.vault.azure.net/"
       }

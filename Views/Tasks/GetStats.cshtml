@@ -2,25 +2,67 @@
 
 <div class="container-fluid ">
     <nav class="row navbar navbar-expand navbar-light bg-dark justify-content-center">
-        <h1 class="text-light text-uppercase ">Statistics</h1>
+        <h1 class="text-light text-uppercase ">Home Page</h1>
     </nav>
 
     <div class="d-flex justify-content-around p-lg-4">
         <div class="card">
-            <div class="card-header text-center">
-                Total Task Completion Status
-            </div>
-            <div class="card-body">
-                <canvas id="pieChart"></canvas>
-            </div>
+            @if (Model.taskCount == 0)
+            {
+                <div class="container-fluid bg-light">                    
+                    <div class="jumbotron-fluid text-center p-3">
+                        <h1 class="display-4 font-weight-bold">Make a Task!</h1>
+                        <hr class="my-3">
+                        <p>It looks like you don't have any tasks created! Let's find a project and make a task in it!</p>
+                        <div class="container">
+                            @if (Model.projCount == 0)
+                            {
+                                <a asp-controller="Projects" asp-action="Create" class="btn btn-block btn-success  "><i class="fas fa-plus-square"></i> Create</a>
+                            }
+                            else
+                            {
+                                <a asp-controller="Projects" asp-action="Index" class="btn btn-block btn-success  "><i class="fas fa-plus-square"></i> Create</a>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="card-header text-center">
+                    Total Task Completion Status
+                </div>
+                <div class="card-body">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            }
+
         </div>
         <div class="card">
-            <div class="card-header text-center">
-                Projects and Tasks
-            </div>
-            <div class="card-body">
-                <canvas id="barChart"></canvas>
-            </div>
+            @if (Model.projCount == 0)
+            {
+                <div class="container-fluid bg-light">                    
+                    <div class="jumbotron-fluid text-center p-3">
+                        <h1 class="display-4 font-weight-bold">Make a Project!</h1>
+                        <hr class="my-3">
+                        <p>It looks like you don't have any projects going on! Let's make one!</p>
+                        <div class="container">
+                            <a asp-controller="Projects" asp-action="Create" class="btn btn-block btn-success  "><i class="fas fa-plus-square"></i> Create</a>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="card-header text-center">
+                    Projects and Tasks
+                </div>
+                <div class="card-body">
+                    <canvas id="barChart"></canvas>
+                </div>
+            }
+
         </div>        
     </div>
 </div>

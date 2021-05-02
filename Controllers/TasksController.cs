@@ -9,9 +9,11 @@ using BugTracker.Data;
 using BugTracker.Models;
 using Microsoft.AspNetCore.Identity;
 using BugTracker.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BugTracker.Controllers
 {
+    [Authorize]
     public class TasksController : Controller
     {
         private readonly BTAuthContext _context;

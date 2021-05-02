@@ -70,7 +70,7 @@ namespace BugTracker
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Tasks}/{action=ShowStats}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

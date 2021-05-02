@@ -8,7 +8,7 @@
     <nav class="row navbar navbar-expand navbar-light bg-dark">
         <h1 class="text-light text-uppercase">Delete Project</h1>
     </nav>
-    <div class="row p-3">
+    <div class="p-3">
         <dl class="row">
             <dt class="col-5">
                 @Html.DisplayNameFor(model => model.ProjectName)
@@ -28,15 +28,15 @@
             <dd class="col-5">
                 @Html.DisplayFor(model => model.ProjectDate)
             </dd>
-        </dl>
-        
-        <div class="form-group btn-group btn-block">
-            <input type="submit" value="Delete" class="btn btn-danger" />
-            <a asp-action="Index" class="btn btn-outline-secondary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
-        </div>
-        <input type="hidden" asp-for="ProjectID" />
+        </dl> 
+        <form asp-action="Delete">
+            <div class="btn-block btn-group">
+                <input type="submit" value="Delete" class="btn btn-danger" /><br />
+                <a asp-action="Index" class="btn btn-outline-secondary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+            </div>
+            <input type="hidden" asp-for="ProjectID" />
 
-        
+        </form>
     </div>
     
 

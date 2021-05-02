@@ -5,11 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<nav class="offset-md-3 row navbar navbar-expand navbar-light bg-light" style="max-width:40%">
-    <h1 class="text-success">Delete Task</h1>
-</nav>
-<div class="offset-md-3 row " style="background-color:white; max-width:40%">
-    <div class="m-3">
+<div class="container-fluid w-50 bg-light">
+    <nav class="row navbar navbar-expand navbar-light bg-dark">
+        <h1 class="text-light text-uppercase">Delete Task</h1>
+    </nav>
+    
+    <div class="p-3">
         <dl class="row ">
             <dt class="col-5">
                 @Html.DisplayNameFor(model => model.ProjectID)
@@ -66,6 +67,5 @@
             <input type="hidden" asp-for="TaskID" />
 
         </form>
-    </div>
-    
+    </div>    
 </div>

@@ -2,13 +2,31 @@
 
 @{
     ViewData["Title"] = "Projects";
-    Layout = "~/Views/Shared/_Layout.cshtml";    
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container-fluid bg-light pb-1">
+@if (Model.Count() == 0)
+{
+    <div class="container-fluid bg-light pb-1">
+        <nav class="row navbar navbar-expand navbar-light bg-dark">
+            <h1 class="text-light text-uppercase">All Project</h1>        
+        </nav>
+        <div class="jumbotron text-center ">
+            <h1 class="display-4 font-weight-bold">Make a Project!</h1>
+            <hr class="my-5">
+            <p>It looks like you don't have any projects going on! Let's make one!</p>
+            <div class="container">
+                <a asp-action="Create" class="btn btn-block btn-success  "><i class="fas fa-plus-square"></i> Create</a>
+            </div>            
+        </div>
+     </div>
+}
+else
+{
+    <div class="container-fluid bg-light pb-1">
         <nav class="row navbar navbar-expand navbar-light bg-dark">
             <h1 class="text-light text-uppercase">All Project</h1>
-        
+
             <div class="col" id="navbarColor02">
 
                 <form asp-action="Index" method="get" class="form-inline col">
@@ -63,5 +81,7 @@
                 }
             </tbody>
         </table>
+
     </div>
+}
 

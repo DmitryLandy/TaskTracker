@@ -38,6 +38,7 @@
                 <span asp-validation-for="TaskDeadline" class="text-danger"></span>
             </div>
             <div class="custom-control custom-switch">
+
                 <input type="checkbox" class="custom-control-input" id="customSwitch1" asp-for="Completed">
                 <label class="custom-control-label" for="customSwitch1"> Task Completion</label>
 
@@ -45,8 +46,11 @@
             <br />
 
             <div class="form-group btn-group btn-block">
-                <input type="submit" value="Save" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-outline-secondary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+                @*<input asp-controller="Projects" asp-action="Details" asp-route-id="@Model.ProjectID.ToString()" type="submit" value="Update" class="btn btn-primary" />
+                <a asp-controller="Projects" asp-action="Details" asp-route-id="@Model.ProjectID.ToString()" class="btn btn-outline-secondary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>*@
+
+                <input type="submit" value="Update" class="btn btn-primary" />
+                <a asp-controller="Projects" asp-action="Details" asp-route-id="@Model.ProjectID.ToString()" class="btn btn-outline-secondary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
 
             </div>
         </form>

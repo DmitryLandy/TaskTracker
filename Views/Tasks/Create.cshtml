@@ -43,7 +43,8 @@
                 <div class="form-group mt-2">
                     
                     <div class="btn-block btn-group">
-                        <input asp-controller="Projects" asp-action="Details" asp-route-id="@Context.Request.RouteValues["id"]" type="submit" value="Create" class="btn btn-primary" />
+                        
+                        <input type="submit" value="Create" class="btn btn-primary" />
                         <a asp-controller="Projects" asp-action="Details" asp-route-id="@Context.Request.RouteValues["id"]"  class="btn btn-outline-secondary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
                        
                     </div>

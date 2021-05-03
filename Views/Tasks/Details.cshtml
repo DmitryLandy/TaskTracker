@@ -59,9 +59,9 @@
         </dl>
 
         <div class="btn-group btn-block">
-            <a asp-action="Edit" asp-route-id="@Model.TaskID" class="btn btn-outline-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
 
-            <a asp-action="Index" class="btn btn-outline-secondary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+            <a asp-action="Edit" asp-route-id="@Model.TaskID" class="btn btn-outline-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+            <a asp-controller="Projects" asp-action="Details" asp-route-id="@Model.ProjectID.ToString()" class="btn btn-outline-secondary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
         </div>
     </div>
 </div>

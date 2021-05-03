@@ -2,12 +2,29 @@
 
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Task Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container-fluid bg-light">
     <nav class="row navbar navbar-expand navbar-light bg-dark">
         <h1 class="text-light text-uppercase">Project Details </h1>
+
+        <form asp-action="Details" method="post" class="form-inline col">
+            <input class="form-control" type="hidden" name="id" value="@Model.Item2.ProjectID" />
+            <input class="form-control col-8" type="text" name="searchString" placeholder="Enter Task Search Value..." value="@ViewData["GetTasks"]" />
+
+            <div class="col">
+                <select name="comp" class="form-control" data-role="select-dropdown">
+                    <option selected>Filter By Status</option>
+                    <option value="true">Complete</option>
+                    <option value="false">Incomplete</option>
+                </select>
+            </div>
+            <div class="btn-group col">
+                <input type="submit" value="Search" class="btn btn-primary" />
+                <a asp-action="Details" class="btn btn-light" value="@Model.Item2.ProjectID"> Reset</a>
+            </div>
+        </form>
     </nav>
 
     <div class="d-flex justify-content-around p-lg-4">
@@ -20,12 +37,12 @@
             <thead>
                 <tr>                    
                     <th width="10%">Task Name</th>
-                    <th width="25%">Task Description</th>
+                    <th width="20%">Task Description</th>
                     <th width="10%">Task Start Date</th>
                     <th width="10%">Task Deadline</th>
                     <th width="10%">Completion Status</th>
                     
-                    <th class="text-center w-25">
+                    <th width="15%" class="text-center">
                         <a asp-controller="Tasks" asp-action="Create" asp-route-id="@Model.Item2.ProjectID" class="btn btn-block btn-success "><i class="fas fa-plus-square"></i> Create</a>
                     </th>
                 </tr>

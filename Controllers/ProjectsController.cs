@@ -63,21 +63,34 @@ namespace BugTracker.Controllers
             
         }
 
-        //public async Task<IActionResult> DetailsGraph(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    var tasks = await _context.Tasks.Where(t => t.ProjectID == id).ToListAsync();
-        //    var projects = await _context.Projects.FirstOrDefaultAsync(t => t.ProjectID == id);
-        //    var tasksCompleted = tasks.Where(t => t.Completed == true);
-        //    var tasksUncompleted = tasks.Where(t => t.Completed == false);
-        //    var jsonRes = new JsonResult(new { myComplete = tasksCompleted, myIncomplete = tasksUncompleted });
+        [HttpPost]
+        public async Task<IActionResult> Details(int? id, string searchString, bool? comp)
+        {
+            ViewData["GetTasks"] = searchString;
 
-        //    return jsonRes;
+            var filteredTask = await _context.Tasks.Where(t => t.ProjectID == id).ToListAsync();
+            var projRes = await _context.Projects.FirstOrDefaultAsync(t => t.ProjectID == id);
+                      
 
-        //}
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                filteredTask = filteredTask.Where(t =>
+                    t.TaskName.Contains(searchString) ||
+                    t.TaskDescription.Contains(searchString) ||
+                    t.TaskDeadline.Contains(searchString) ||
+                    t.TaskStartDate.Contains(searchString)
+                ).ToList();
+            }
+            if (comp.HasValue)
+            {
+                filteredTask = filteredTask.Where(t =>
+                    t.Completed == comp
+                ).ToList();
+            }
+
+            var tuple = (filteredTask, projRes);
+            return View(tuple);
+        }
 
 
         // GET: Projects/Create

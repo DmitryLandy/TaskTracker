@@ -62,7 +62,7 @@
         <form asp-action="Delete">
             <div class="btn-block btn-group">
                 <input type="submit" value="Delete" class="btn btn-danger" /><br />
-                <a asp-action="Index" class="btn btn-outline-secondary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+                <a asp-controller="Projects" asp-action="Details" asp-route-id="@Model.ProjectID.ToString()" class="btn btn-outline-secondary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
             </div>
             <input type="hidden" asp-for="TaskID" />
 

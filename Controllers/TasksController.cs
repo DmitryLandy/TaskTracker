@@ -126,7 +126,7 @@ namespace BugTracker.Controllers
             {                
                 _context.Add(tasks);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details","Projects", new { id = tasks.ProjectID });
             }
             return View(tasks);
         }
@@ -178,7 +178,7 @@ namespace BugTracker.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Projects", new { id = tasks.ProjectID });
             }
             return View(tasks);
         }
@@ -209,7 +209,7 @@ namespace BugTracker.Controllers
             var tasks = await _context.Tasks.FindAsync(id);
             _context.Tasks.Remove(tasks);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Details", "Projects", new { id = tasks.ProjectID });
         }
 
         private bool TasksExists(int id)

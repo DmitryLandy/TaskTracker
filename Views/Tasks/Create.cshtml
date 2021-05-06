@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="TaskStartDate" class="control-label"></label>
-                    <input asp-for="TaskStartDate" class="form-control" />
+                    <input asp-for="TaskStartDate" class="form-control" value="@DateTime.Now.Date.ToString("yyyy-MM-dd")"/>
                     <span asp-validation-for="TaskStartDate" class="text-danger"></span>
                 </div>
                 <div class="form-group">

@@ -64,9 +64,9 @@ namespace BugTracker.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Details(int? id, string searchString, bool? comp)
+        public async Task<IActionResult> Details(int id, string searchString, bool? comp) //TODO: remove nullables turns to reference types.
         {
-            ViewData["GetTasks"] = searchString;
+            ViewData["GetTasks"] = searchString; 
 
             var filteredTask = await _context.Tasks.Where(t => t.ProjectID == id).ToListAsync();
             var projRes = await _context.Projects.FirstOrDefaultAsync(t => t.ProjectID == id);

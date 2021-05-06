@@ -91,24 +91,6 @@ namespace BugTracker.Controllers
             return View("GetStats",tvm);
         }
 
-        // GET: Tasks/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tasks = await _context.Tasks
-                .FirstOrDefaultAsync(m => m.TaskID == id);
-            if (tasks == null)
-            {
-                return NotFound();
-            }
-
-            return View(tasks);
-        }
-
         // GET: Tasks/Create
         public IActionResult Create(int? projID)
         {

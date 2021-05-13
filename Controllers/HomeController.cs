@@ -1,4 +1,5 @@
-﻿using BugTracker.Models;
+﻿using BugTracker.Data;
+using BugTracker.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -16,16 +17,33 @@ namespace BugTracker.Controllers
     {
         
         private readonly ILogger<HomeController> _logger;
-        
-        public HomeController(ILogger<HomeController> logger)
-        {            
+        private readonly BTAuthContext _context;
+
+        public HomeController(ILogger<HomeController> logger, BTAuthContext context)
+        {
+            _context = context;
             _logger = logger;           
         }
 
         public IActionResult Index()
         {
-            return RedirectToAction("ShowStats","Tasks");
-        }    
+            return View();
+            //return RedirectToAction("ShowStats","Tasks");
+        }
+
+        public JsonResult GetEvents()
+        {
+            using (_context)
+            {
+                var events = _context.Event.ToList();
+                
+                return new JsonResult(new { data = events });
+            }              
+
+        }
+
+
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

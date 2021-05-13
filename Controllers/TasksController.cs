@@ -74,7 +74,7 @@ namespace BugTracker.Controllers
                
         public async Task<IActionResult> ShowStats()
         {
-            TaskViewModel tvm = new TaskViewModel();
+            TaskViewModel tvm = new();
 
             tvm.projRes = await _context.Projects.Where(p => p.UserID == _userManager.GetUserId(User)).ToListAsync();
             tvm.taskRes = await _context.Tasks.ToListAsync();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BugTracker.Areas.Identity.Data;
+using BugTracker.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -15,9 +16,11 @@ namespace BugTracker.Data
             : base(options)
         {
         }
-        public DbSet<BugTracker.Models.Projects> Projects { get; set; }
+        public DbSet<Event> Event { get; set; }
+        public DbSet<Projects> Projects { get; set; }
 
-        public DbSet<BugTracker.Models.Tasks> Tasks { get; set; }
+        public DbSet<Tasks> Tasks { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

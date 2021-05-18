@@ -14,8 +14,7 @@ namespace BugTracker.Controllers
     public class ProjectsController : Controller
     {
         private readonly BTAuthContext _context;
-        private readonly UserManager<BugTrackerUser> _userManager;
-        
+        private readonly UserManager<BugTrackerUser> _userManager;        
 
         public ProjectsController(UserManager<BugTrackerUser> userManager, BTAuthContext context)
         {

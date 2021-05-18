@@ -41,7 +41,7 @@ namespace BugTracker
 
                 options.ClientId = googleAuthNSection["ClientId"];
                 options.ClientSecret = googleAuthNSection["ClientSecret"];
-            });
+            });           
         }
 
 
